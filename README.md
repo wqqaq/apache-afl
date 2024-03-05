@@ -19,3 +19,5 @@ cd fuzzer-dir/
 ```
 
 > Tested on: AFL Version ++4.00c (release) under a `aflplusplus/aflplusplus` docker image
+
+change fuzz.patch2.c for afl-fuzz++4.10a
