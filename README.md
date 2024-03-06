@@ -24,17 +24,15 @@ change /httpd-2.4.52/server/main.c /httpd-2.4.52/server/core.c for afl-fuzz++4.1
 
 then,run:
 ```
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-PREFIX=/usr/local/apache_lab/
 CC=afl-clang-fast \
 CXX=afl-clang-fast++ \
-CFLAGS="-g -fsanitize=address -fno-sanitize-recover=all" \
-CXXFLAGS="-g -fsanitize=address -fno-sanitize-recover=all" \
-LDFLAGS="-fsanitize=address -fno-sanitize-recover=all -lm" \
-./configure --with-apr="$PREFIX/apr/" \
-            --with-apr-util="$PREFIX/apr-util/" \
-            --with-expat="$PREFIX/expat/" \
-            --with-pcre="$PREFIX/pcre/" \
+CFLAGS="-g -std=c99" \
+CXXFLAGS="-g -std=c99" \
+LDFLAGS="-lm" \
+./configure --with-apr="/usr/local/apache_lab/apr/" \
+            --with-apr-util="/usr/local/apache_lab/apr-util/" \
+            --with-expat="/usr/local/apache_lab/expat/" \
+            --with-pcre="/usr/local/apache_lab/pcre/" \
             --disable-pie \
             --disable-so \
             --disable-example-ipc \
